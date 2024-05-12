@@ -1,0 +1,18 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: datadog-cluster-agent
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: datadog-cluster-agent
+subjects:
+- kind: ServiceAccount
+  name: datadog-cluster-agent
+  namespace: default #use the namespace u want
+---
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: datadog-cluster-agent
+  namespace: default #use the namespace u want
